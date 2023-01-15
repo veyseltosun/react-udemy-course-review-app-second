@@ -16,13 +16,15 @@ class App extends React.Component{
         );
     }
     render(){
-     
-      return(
-        <div>
-            {this.state.latitute}
-            {this.state.errorMessage}
-        </div>
-      )  
+    if(this.state.errorMessage && !this.state.latitute) {
+        return <div>{this.state.errorMessage}</div>
+    }  
+    if(!this.state.errorMessage && this.state.latitute){
+        return <div>{this.state.latitute}</div>
+    }
+    else {
+        return <div>Loading...</div>
+    }
     }
 }
 ReactDOM.render(
